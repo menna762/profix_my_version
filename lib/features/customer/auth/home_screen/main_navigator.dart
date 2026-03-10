@@ -1,25 +1,27 @@
-import 'package:app/screens/request_page_screen.dart';
+
 import 'package:app/screens/technician_search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/models.dart';
-import '../providers/app_provider.dart';
-import '../theme.dart';
-import 'customer_home_screen.dart';
-import 'requests_page_screen.dart';
-import 'request_form_screen.dart';
-import 'request_tracking_screen.dart';
-import 'chat_screen.dart';
-import 'profile_screen.dart';
-import 'notifications_screen.dart';
-import 'technician_dashboard_screen.dart';
-
-import 'technician_my_requests_screen.dart';
-import 'technician_request_details_screen.dart';
+import '../../../../screens/request_page_screen.dart';
+import 'tabs/search_tab/search_screen.dart';
+import '../../../../models/models.dart';
+import '../../../../providers/app_provider.dart';
+import '../../../../theme.dart';
+import '../../../../screens/customer_home_screen.dart';
+import '../../../../screens/request_form_screen.dart';
+import '../../../../screens/request_tracking_screen.dart';
+import '../../../../screens/chat_screen.dart';
+import '../../../../screens/notifications_screen.dart';
+import '../../../../screens/technician_dashboard_screen.dart';
+import '../../../../screens/technician_my_requests_screen.dart';
+import '../../../../screens/technician_request_details_screen.dart';
+import 'tabs/profile_tab/profile_tab.dart';
+import '../../../technican/profile_technican/profile_tab.dart';
 
 // ─── Customer Shell ───────────────────────────────────────────────────────────
 
 class CustomerShell extends StatefulWidget {
+  static const String routeName = 'customerShell';
   final VoidCallback onLogout;
   const CustomerShell({super.key, required this.onLogout});
 
@@ -73,12 +75,12 @@ class _CustomerShellState extends State<CustomerShell> {
         onChat: (id) => setState(() => _chatRequestId = id),
         onNotifications: () => setState(() => _showNotifications = true),
       ),
-      const Center(child: Text('Search – Coming Soon')),
+      SearchScreen(),
       RequestsPageScreen(
         onSelectRequest: (id) => setState(() => _viewingRequestId = id),
         onChat: (id) => setState(() => _chatRequestId = id),
       ),
-      ProfileScreen(onLogout: widget.onLogout),
+      const ProfileTab(),
     ];
 
     return Scaffold(
@@ -100,6 +102,7 @@ class _CustomerShellState extends State<CustomerShell> {
 // ─── Technician Shell ─────────────────────────────────────────────────────────
 
 class TechnicianShell extends StatefulWidget {
+  static const String routeName = 'technicianShell';
   final VoidCallback onLogout;
   const TechnicianShell({super.key, required this.onLogout});
 
@@ -157,7 +160,7 @@ class _TechnicianShellState extends State<TechnicianShell> {
       TechnicianMyRequestsScreen(
         onViewRequest: (id) => setState(() { _viewingRequestId = id; _viewingFromSearch = false; }),
       ),
-      ProfileScreen(onLogout: widget.onLogout),
+      const TechnicianProfileTab(),
     ];
 
     return Scaffold(

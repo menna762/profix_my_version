@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../theme.dart';
-// customor or technician
+import 'package:app/features/customer/auth/login/login_screen.dart';
+import 'package:app/features/customer/auth/login/register/technician_register_screen.dart';
 
 class LandingScreen extends StatelessWidget {
+  static const String routeName = 'landing';
   final Function(UserRole) onSelectRole;
   const LandingScreen({super.key, required this.onSelectRole});
 
@@ -19,7 +21,7 @@ class LandingScreen extends StatelessWidget {
               // Logo
               Container(
                 width: 80, height: 80,
-                decoration: BoxDecoration(color: AppTheme.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(color: AppTheme.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(20)),
                 child: const Icon(Icons.build_circle, size: 48, color: AppTheme.primary),
               ),
               const SizedBox(height: 20),
@@ -35,7 +37,14 @@ class LandingScreen extends StatelessWidget {
                 title: 'Customer',
                 subtitle: 'Find skilled technicians for your home repairs',
                 color: AppTheme.primary,
-                onTap: () => onSelectRole(UserRole.customer),
+                onTap: () {
+                  onSelectRole(UserRole.customer);
+                  Navigator.pushReplacementNamed(
+                    context, 
+                    LoginScreen.routeName,
+                    arguments: 'customer'
+                  );
+                },
               ),
               const SizedBox(height: 12),
               _roleCard(
@@ -44,7 +53,14 @@ class LandingScreen extends StatelessWidget {
                 title: 'Technician',
                 subtitle: 'Offer your services and earn money',
                 color: AppTheme.success,
-                onTap: () => onSelectRole(UserRole.technician),
+                onTap: () {
+                  onSelectRole(UserRole.technician);
+                  Navigator.pushReplacementNamed(
+                    context, 
+                    LoginScreen.routeName,
+                    arguments: 'technician'
+                  );
+                },
               ),
               const SizedBox(height: 32),
             ],
@@ -61,15 +77,15 @@ class LandingScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          border: Border.all(color: color.withOpacity(0.3), width: 2),
+          border: Border.all(color: color.withValues(alpha: 0.3), width: 2),
           borderRadius: BorderRadius.circular(16),
-          color: color.withOpacity(0.04),
+          color: color.withValues(alpha: 0.04),
         ),
         child: Row(
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: color.withOpacity(0.12), borderRadius: BorderRadius.circular(12)),
+              decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
               child: Icon(icon, color: color, size: 28),
             ),
             const SizedBox(width: 16),

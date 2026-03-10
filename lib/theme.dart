@@ -16,13 +16,12 @@ class AppTheme {
       secondary: success,
       error: danger,
       surface: Colors.white,
-      background: const Color(0xFFF3F6FA),
     ),
     scaffoldBackgroundColor: const Color(0xFFF3F6FA),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: Colors.white,
       elevation: 2,
-      shadowColor: Colors.black.withOpacity(0.08),
+      shadowColor: Colors.black.withValues(alpha: 0.08),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),
     appBarTheme: const AppBarTheme(
@@ -67,9 +66,9 @@ class AppTheme {
     ),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: Colors.white,
-      indicatorColor: primary.withOpacity(0.12),
-      labelTextStyle: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) {
+      indicatorColor: primary.withValues(alpha: 0.12),
+      labelTextStyle: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
           return const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: primary);
         }
         return TextStyle(fontSize: 11, color: Colors.grey.shade500);
@@ -83,7 +82,7 @@ class AppTheme {
       seedColor: primary,
       brightness: Brightness.dark,
     ).copyWith(primary: primary, secondary: success, error: danger),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),

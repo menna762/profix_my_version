@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/models.dart';
 import '../theme.dart';
+import '../utils/profix_colors.dart';
 
 // ─── Status Badge ─────────────────────────────────────────────────────────────
 
@@ -287,7 +288,7 @@ class RequestCard extends StatelessWidget {
                     children: [
                       Icon(Icons.chat_bubble_outline, size: 16, color: AppTheme.primary),
                       const SizedBox(width: 8),
-                      Text('Chat with Technician', style: TextStyle(fontSize: 14, color: AppTheme.primary, fontWeight: FontWeight.w500)),
+                      Text('Chat with Technician', style: TextStyle(fontSize: 14, color: ProfixColors.lightBlue, fontWeight: FontWeight.w500)),
                       const Spacer(),
                       Icon(Icons.chevron_right, size: 18, color: Colors.grey.shade400),
                     ],
@@ -322,7 +323,7 @@ class SectionHeader extends StatelessWidget {
             onPressed: onAction,
             icon: const Icon(Icons.chevron_right, size: 16),
             label: Text(actionLabel!),
-            style: TextButton.styleFrom(foregroundColor: AppTheme.primary, padding: EdgeInsets.zero),
+            style: TextButton.styleFrom(foregroundColor: ProfixColors.lightBlue, padding: EdgeInsets.zero),
           ),
       ],
     );

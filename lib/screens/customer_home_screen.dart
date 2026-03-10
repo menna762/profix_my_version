@@ -1,3 +1,4 @@
+import 'package:app/utils/profix_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/models.dart';
@@ -6,6 +7,7 @@ import '../widgets/shared_widgets.dart';
 import '../theme.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
+  static const String routeName = 'customerHomeScreen';
   final VoidCallback onNewRequest;
   final Function(ServiceType) onSelectService;
   final Function(String) onViewTechnician;
@@ -82,7 +84,7 @@ class CustomerHomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: onNewRequest,
-        backgroundColor: AppTheme.primary,
+        backgroundColor: ProfixColors.lightBlue,
         child: const Icon(Icons.add, color: Colors.white),
       ),
     );
@@ -101,7 +103,7 @@ class CustomerHomeScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundColor: AppTheme.primary.withOpacity(0.1),
+                    backgroundColor: AppTheme.primary.withValues(alpha: 0.1),
                     child: Text(app.user?.name[0] ?? 'G', style: const TextStyle(fontWeight: FontWeight.bold, color: AppTheme.primary, fontSize: 18)),
                   ),
                   const SizedBox(width: 12),
@@ -146,7 +148,7 @@ class CustomerHomeScreen extends StatelessWidget {
   Widget _statCard(String value, String label, Color color) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(14)),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(14)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
