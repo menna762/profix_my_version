@@ -66,6 +66,7 @@ class ProFixApp extends StatelessWidget {
 
       home: const AppRoot(),
 
+
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),
         CustomerShell.routeName: (context) => CustomerShell(onLogout: () {}),
